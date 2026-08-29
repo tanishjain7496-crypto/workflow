@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Mode Workflow Launcher</title>
+  <meta name="description" content="Dev Mode Workflow — Custom AI links and desktop app launcher with automatic icon extraction and dedicated data storage." />
+
+  <!-- Inter (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- BubbledotICG-FinePos (retro dot-matrix display) -->
+  <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet" />
+
+  <!-- Font Awesome 6.5.2 -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── Background Video ─── -->
+  <div class="bg">
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+
+  <!-- ─── Page Wrapper ─── -->
+  <div class="page">
+
+    <!-- ══════════════════════════════════════════════
+         HEADER & INTEGRATED CONTROL BAR (No drawers/overlays)
+    ══════════════════════════════════════════════ -->
+    <header class="header anim" style="--d: 0s">
+
+      <!-- Logo -->
+      <a href="#" class="logo-btn" aria-label="Dev Mode Workflow home">
+        <img src="assets/logo.webp" alt="" width="52" height="52" class="logo-img" />
+      </a>
+
+      <!-- Filter Nav Pill -->
+      <nav class="nav-pill" role="navigation" aria-label="Main navigation">
+        <button class="nav-link active" data-filter="all">All Items (<span id="count-all">7</span>)</button>
+        <button class="nav-link" data-filter="urls">Brave AI Tabs (<span id="count-urls">4</span>)</button>
+        <button class="nav-link" data-filter="apps">Desktop Apps (<span id="count-apps">3</span>)</button>
+      </nav>
+
+      <!-- Integrated Header Action Buttons -->
+      <div class="header-actions">
+        <button class="action-btn secondary" id="open-add-website-btn" title="Add a new website URL with auto-favicon extraction">
+          <i class="fa-solid fa-globe"></i> + Website
+        </button>
+        <button class="action-btn secondary" id="open-add-app-btn" title="Add a new desktop executable or shortcut with auto-icon extraction">
+          <i class="fa-solid fa-folder-plus"></i> + App / EXE
+        </button>
+        <button class="sign-in-btn" id="launch-all-header-btn">
+          <i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> LAUNCH ALL
+        </button>
+      </div>
+
+    </header>
+
+    <!-- ══════════════════════════════════════════════
+         HERO & WORKFLOW DASHBOARD
+    ══════════════════════════════════════════════ -->
+    <main class="hero" id="main-content">
+
+      <!-- Status Row -->
+      <div class="trust-row anim" style="--d: 0.05s">
+        <div class="avatar-stack">
+          <div class="avatar a1" title="Brave Browser Integration">
+            <div class="avatar-inner"><i class="fa-brands fa-brave-reverse" style="color: #ff5500;"></i></div>
+          </div>
+          <div class="avatar a2" title="Auto Favicon Extraction">
+            <div class="avatar-inner"><i class="fa-solid fa-wand-magic-sparkles" style="color: #4285f4;"></i></div>
+          </div>
+          <div class="avatar a3" title="Dedicated Data Storage">
+            <div class="avatar-inner"><i class="fa-solid fa-database" style="color: #00e676;"></i></div>
+          </div>
+        </div>
+        <div class="trust-pill">
+          <span id="brave-status-text">✓ System Connected • Brave Launcher Ready</span>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="headline" aria-label="Dev Mode Workflow">
+        <span class="hl-line anim" style="--d: 0.12s">DEV MODE</span>
+        <span class="hl-line anim" style="--d: 0.22s">WORKFLOW LAUNCHER</span>
+      </h1>
+
+      <!-- Subhead -->
+      <p class="subhead anim" style="--d: 0.28s">
+        Automated workflow sequence for Gemini, ChatGPT, Claude, Perplexity, YouTube, Antigravity IDE & Habit Tracker.
+      </p>
+
+      <!-- Main Action CTA -->
+      <div class="cta-container anim" style="--d: 0.35s">
+        <button class="cta-btn" id="main-launch-btn">
+          <i class="fa-solid fa-rocket" style="margin-right: 8px;"></i> 🚀 LAUNCH ALL WORKFLOW ITEMS
+        </button>
+      </div>
+
+      <!-- Interactive Dynamic Workflow Grid -->
+      <div class="workflow-grid anim" style="--d: 0.42s" id="workflow-grid">
+        
+        <!-- 1. Gemini -->
+        <div class="workflow-card" data-id="gemini" data-type="urls" data-url="https://gemini.google.com/app?hl=en-IN">
+          <div class="card-icon">
+            <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" class="card-icon-img" alt="Gemini AI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <i class="fa-solid fa-sparkles" style="display:none; color: #4285f4;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Gemini AI</div>
+            <div class="card-sub">gemini.google.com</div>
+          </div>
+          <div class="card-tag">Brave Tab</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch Gemini in Brave"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- 2. ChatGPT -->
+        <div class="workflow-card" data-id="chatgpt" data-type="urls" data-url="https://chatgpt.com">
+          <div class="card-icon">
+            <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" class="card-icon-img" alt="ChatGPT" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <i class="fa-solid fa-robot" style="display:none; color: #10a37f;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">ChatGPT</div>
+            <div class="card-sub">chatgpt.com</div>
+          </div>
+          <div class="card-tag">Brave Tab</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch ChatGPT in Brave"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- 3. Claude AI -->
+        <div class="workflow-card" data-id="claude" data-type="urls" data-url="https://claude.com">
+          <div class="card-icon">
+            <img src="https://www.google.com/s2/favicons?domain=claude.com&sz=128" class="card-icon-img" alt="Claude AI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <i class="fa-solid fa-brain" style="display:none; color: #d97706;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Claude AI</div>
+            <div class="card-sub">claude.com</div>
+          </div>
+          <div class="card-tag">Brave Tab</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch Claude in Brave"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- 4. Perplexity AI -->
+        <div class="workflow-card" data-id="perplexity" data-type="urls" data-url="https://www.perplexity.ai/">
+          <div class="card-icon">
+            <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" class="card-icon-img" alt="Perplexity AI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <i class="fa-solid fa-magnifying-glass" style="display:none; color: #00b4d8;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Perplexity AI</div>
+            <div class="card-sub">perplexity.ai</div>
+          </div>
+          <div class="card-tag">Brave Tab</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch Perplexity in Brave"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- 5. YouTube App -->
+        <div class="workflow-card" data-id="youtube" data-type="apps" data-path="C:\Users\Tanis\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\YouTube.lnk">
+          <div class="card-icon" style="background: linear-gradient(135deg, #990000, #ff0000);">
+            <i class="fa-brands fa-youtube" style="color: #fff; font-size: 18px;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">YouTube App</div>
+            <div class="card-sub">Chrome Apps / YouTube.lnk</div>
+          </div>
+          <div class="card-tag app">Desktop App</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch YouTube App"><i class="fa-solid fa-play"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- 6. Antigravity IDE -->
+        <div class="workflow-card" data-id="antigravity_ide" data-type="apps" data-path="C:\Users\Tanis\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Antigravity IDE.exe.lnk">
+          <div class="card-icon" style="background: linear-gradient(135deg, #311b92, #6c5ce7);">
+            <i class="fa-solid fa-code" style="color: #fff; font-size: 16px;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Antigravity IDE</div>
+            <div class="card-sub">Antigravity IDE.exe.lnk</div>
+          </div>
+          <div class="card-tag app">Desktop App</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch Antigravity IDE"><i class="fa-solid fa-play"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- 7. Habit Tracker -->
+        <div class="workflow-card" data-id="habit_tracker" data-type="apps" data-path="C:\Users\Tanis\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Habit Tracker.lnk">
+          <div class="card-icon" style="background: linear-gradient(135deg, #004d40, #00e676);">
+            <i class="fa-solid fa-chart-line" style="color: #fff; font-size: 16px;"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Habit Tracker</div>
+            <div class="card-sub">Habit Tracker.lnk</div>
+          </div>
+          <div class="card-tag app">Desktop App</div>
+          <div class="card-actions">
+            <button class="card-launch-btn" title="Launch Habit Tracker"><i class="fa-solid fa-play"></i></button>
+            <button class="card-delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Activity & Debug Log Bar -->
+      <div class="activity-log-bar" id="activity-log-bar">
+        <i class="fa-solid fa-terminal" style="color: #64ffda; margin-right: 6px;"></i>
+        <span id="log-text">System status: Ready. Right-click window to inspect debug console.</span>
+      </div>
+
+    </main>
+
+    <!-- ══════════════════════════════════════════════
+         STATS FOOTER
+    ══════════════════════════════════════════════ -->
+    <footer class="stats-bar" aria-label="Platform statistics">
+
+      <div class="stat-item anim" style="--d: 0.5s" data-target="4" data-suffix="Tabs" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">&lt;</span>
+        <span class="stat-value">
+          <span class="count">4</span><span class="stat-suffix">Tabs</span>
+        </span>
+        <span class="stat-label">Brave AI Tools</span>
+      </div>
+
+      <div class="stat-item anim" style="--d: 0.58s" data-target="3" data-suffix="Apps" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">%</span>
+        <span class="stat-value">
+          <span class="count">3</span><span class="stat-suffix">Apps</span>
+        </span>
+        <span class="stat-label">Desktop Apps</span>
+      </div>
+
+      <div class="stat-item anim" style="--d: 0.66s" data-target="1" data-suffix="Folder" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">*</span>
+        <span class="stat-value">
+          <span class="count">1</span><span class="stat-suffix">Folder</span>
+        </span>
+        <span class="stat-label">Dedicated Storage</span>
+      </div>
+
+      <div class="stat-item anim" style="--d: 0.74s" data-target="100" data-suffix="%" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">#</span>
+        <span class="stat-value">
+          <span class="count">100</span><span class="stat-suffix">%</span>
+        </span>
+        <span class="stat-label">Auto Icon Extractor</span>
+      </div>
+
+    </footer>
+
+    <!-- ══════════════════════════════════════════════
+         ADD WEBSITE MODAL DIALOG
+    ══════════════════════════════════════════════ -->
+    <div class="modal-backdrop" id="add-website-modal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <span class="modal-title"><i class="fa-solid fa-globe" style="color: #4285f4; margin-right: 8px;"></i> Add New Website</span>
+          <button class="modal-close" id="close-web-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <label class="input-label">Website Name</label>
+          <input type="text" id="web-name-input" class="modal-input" placeholder="e.g. GitHub" />
+
+          <label class="input-label">Website URL</label>
+          <input type="text" id="web-url-input" class="modal-input" placeholder="e.g. https://github.com" />
+
+          <p class="modal-note">✨ Favicon icon will be extracted automatically and saved to <code style="color: #64ffda;">/data/icons/</code></p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn secondary" id="cancel-web-modal">Cancel</button>
+          <button class="modal-btn primary" id="submit-add-website">Add Website & Fetch Icon</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         ADD APP / EXE MODAL DIALOG
+    ══════════════════════════════════════════════ -->
+    <div class="modal-backdrop" id="add-app-modal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <span class="modal-title"><i class="fa-solid fa-folder-plus" style="color: #6c5ce7; margin-right: 8px;"></i> Add Desktop App / EXE</span>
+          <button class="modal-close" id="close-app-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <label class="input-label">App Name</label>
+          <input type="text" id="app-name-input" class="modal-input" placeholder="e.g. Visual Studio Code" />
+
+          <label class="input-label">Executable / Shortcut Path (.exe, .lnk)</label>
+          <div class="input-group">
+            <input type="text" id="app-path-input" class="modal-input" placeholder="C:\Program Files\..." />
+            <button class="browse-btn" id="browse-app-path-btn"><i class="fa-solid fa-folder-open"></i> Browse</button>
+          </div>
+
+          <p class="modal-note">✨ Windows native icon will be extracted automatically and saved to <code style="color: #64ffda;">/data/icons/</code></p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn secondary" id="cancel-app-modal">Cancel</button>
+          <button class="modal-btn primary" id="submit-add-app">Add App & Extract Icon</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+  </div><!-- /.page -->
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+    "brave_path": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+    "items": [
+        {
+            "id": "gemini",
+            "name": "Gemini AI",
+            "type": "urls",
+            "url": "https://gemini.google.com/app?hl=en-IN",
+            "sub": "gemini.google.com",
+            "icon_type": "google",
+            "icon_file": "gemini.png",
+            "tag": "Brave Tab",
+            "enabled": true
+        },
+        {
+            "id": "chatgpt",
+            "name": "ChatGPT",
+            "type": "urls",
+            "url": "https://chatgpt.com",
+            "sub": "chatgpt.com",
+            "icon_type": "chatgpt",
+            "icon_file": "chatgpt.png",
+            "tag": "Brave Tab",
+            "enabled": true
+        },
+        {
+            "id": "claude",
+            "name": "Claude AI",
+            "type": "urls",
+            "url": "https://claude.com",
+            "sub": "claude.com",
+            "icon_type": "claude",
+            "icon_file": "claude.png",
+            "tag": "Brave Tab",
+            "enabled": true
+        },
+        {
+            "id": "perplexity",
+            "name": "Perplexity AI",
+            "type": "urls",
+            "url": "https://www.perplexity.ai/",
+            "sub": "perplexity.ai",
+            "icon_type": "perplexity",
+            "icon_file": "perplexity.png",
+            "tag": "Brave Tab",
+            "enabled": true
+        },
+        {
+            "id": "youtube",
+            "name": "YouTube App",
+            "type": "apps",
+            "path": "C:\\Users\\Tanis\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Chrome Apps\\YouTube.lnk",
+            "sub": "Chrome Apps / YouTube.lnk",
+            "icon_file": "youtube.png",
+            "tag": "Desktop App",
+            "enabled": true
+        },
+        {
+            "id": "antigravity_ide",
+            "name": "Antigravity IDE",
+            "type": "apps",
+            "path": "C:\\Users\\Tanis\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Antigravity IDE.exe.lnk",
+            "sub": "Antigravity IDE.exe.lnk",
+            "icon_file": "antigravity_ide.png",
+            "tag": "Desktop App",
+            "enabled": true
+        },
+        {
+            "id": "habit_tracker",
+            "name": "Habit Tracker",
+            "type": "apps",
+            "path": "C:\\Users\\Tanis\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Habit Tracker.lnk",
+            "sub": "Habit Tracker.lnk",
+            "icon_file": "habit_tracker.png",
+            "tag": "Desktop App",
+            "enabled": true
+        }
+    ]
+}
