@@ -4,22 +4,22 @@ A custom high-performance workflow launcher for Windows that opens all your esse
 
 ---
 
-## 🎯 Configured Launcher Items
+## Configured Launcher Items
 
-### 🌐 Web Applications (Opened in Brave Browser)
+###  Web Applications (Opened in Brave Browser)
 1. **Gemini AI**: `https://gemini.google.com/app?hl=en-IN`
 2. **ChatGPT**: `https://chatgpt.com`
 3. **Claude AI**: `https://claude.com`
 4. **Perplexity AI**: `https://www.perplexity.ai/`
 
-### 🖥️ Desktop Applications & Shortcuts
+### Desktop Applications & Shortcuts
 1. **YouTube App**: `C:\Users\Tanis\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\YouTube.lnk`
 2. **Antigravity IDE**: `C:\Users\Tanis\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Antigravity IDE.exe.lnk`
 3. **Habit Tracker**: `C:\Users\Tanis\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Habit Tracker.lnk`
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ### Option 1: Desktop Shortcut (Instant 1-Click Launch)
 Double-click the **Dev Mode Workflow** shortcut on your Desktop:
